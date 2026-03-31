@@ -123,5 +123,78 @@
 # push("shaher14")
 # print(my_list)
 
-#Queue
+## The above code is correct
 
+# #Queue
+
+# queue = ["" for index in range(10)]
+# front_pointer = 0
+# rear_pointer = -1
+# queue_full = 10
+# queue_length = 0
+# item = ""
+
+# def enqueue(item):
+#     global queue_length, rear_pointer
+#     if queue_length < queue_full:
+#         if rear_pointer < len(queue) -1:
+#             rear_pointer+=1
+#         else:
+#             rear_pointer = 0
+#         queue_length+=1
+#         queue[rear_pointer] = item
+#     else:
+#         print("Queue is full cant enqueue 😭😭")
+
+# def dequeue():
+#     global queue_length,front_pointer,item
+#     if queue_length == 0:
+#         print("Queue is empty  cant dequeue 😭😭")
+#     else:
+#         item = queue[front_pointer]
+#         if front_pointer == len(queue) - 1:
+#             front_pointer = 0
+#         else:
+#             front_pointer+=1
+#         queue_length-=1
+
+# enqueue("shaheer1")
+# enqueue("shaheer2")
+# enqueue("shaheer3")
+# enqueue("shaheer4")
+# enqueue("shaheer5")
+# enqueue("shaheer6")
+# dequeue()
+# enqueue("shaheer7")
+# enqueue("shaheer8")
+# enqueue("shaheer9")
+# enqueue("shaheer10")
+# dequeue()
+# enqueue("shaheer11")
+
+## The above code is correct
+
+# Linked list Searching 
+
+myLinkedList = [42, 17, 89, 34, 56, 12, 77, 23, 91, 45, 68, 10]
+myLinkedListPointers = [-1, 0, 1, 2, 3, 6, 7, 8, 9, 10, 11, -1]
+startPointer = 11
+nullPointer = -1
+
+def find(itemSearch):
+    found = False
+    itemPointer = startPointer
+    while itemPointer != nullPointer and not found:
+        if myLinkedList[itemPointer] == itemSearch:
+            found = True
+        else:
+            itemPointer = myLinkedListPointers[itemPointer]
+    return itemPointer
+
+# Enter item to search for
+item = int(input("Please enter item to be found: "))
+result = find(item)
+if result != -1:
+        print("Item found")
+else:
+    print("Item not found")
