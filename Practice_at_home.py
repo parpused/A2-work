@@ -198,3 +198,261 @@ if result != -1:
         print("Item found")
 else:
     print("Item not found")
+
+# Past PastPapers
+# def Unknown(x,y):
+#     if x < y:
+#         print(str(x+y))
+#         return(Unknown(x+1,y) *2)
+#     else:
+#         if x == y:
+#             return 1
+#         else:
+#             print(str(x+y))
+#             return(int(Unknown(x-1,y)/2))
+
+# def IterativeUnknown(x,y):
+#     total = 1
+#     while x != y :
+#         print(str(x+y))
+#         if x < y :
+#             x = x+1
+#             total*= 2
+#         else:
+#             x = x-1
+#             total = int(total/2)
+#     return total
+
+# print("10,15")
+# print(str(IterativeUnknown(10,15)))
+# print("10,10")
+# print(str(IterativeUnknown(10,10)))
+# print("15,10")
+# print(str(IterativeUnknown(15,10)))
+
+# class Picture:
+#     # PRIVATE description : STRING
+#     # PRIVATE width : INTEGER
+#     # PRIVATE height : INTEGER
+#     # PRIVATE frameColor : STRING
+
+#     def __init__(self, description_p, width_p, height_p, frameColor_p):
+#         self.__description = description_p # STRING
+#         self.__width = width_p # INTEGER
+#         self.__height = height_p # INTEGER
+#         self.__frameColor = frameColor_p # STRING
+
+#     def GetDescription(self):
+#         return self.__description
+    
+#     def GetHeight(self):
+#         return self.__height
+    
+#     def GetWidth(self):
+#         return self.__width
+    
+#     def GetColour(self):
+#         return self.__frameColor
+
+#     def SetDescription(self, newDescription):
+#         self.__description = newDescription
+
+# PictureArray = [Picture('',0,0,"") for i in range(100)]
+
+# def ReadData(PictureArray):
+#     file_name = r"F:\project\class\pastPapersPractice\Pictures.txt"
+#     counter = 0
+#     try:
+#         file = open(file_name,"r")
+#         description = (file.readline()).strip().lower()
+#         while description != "":
+#             width = int((file.readline()).strip())
+#             height = int((file.readline()).strip())
+#             frame = (file.readline()).strip().lower()
+#             PictureArray[counter] = Picture(description,width,height,frame)
+#             description = (file.readline()).strip().lower()
+#             counter +=1
+#         file.close()
+#     except IOError:
+#         print("Could not find the file")
+#     return counter , PictureArray
+
+# numberOfPicture, PictureArray = ReadData(PictureArray)
+
+# frameColor = input("Enter the description: ").lower()
+# max_Width = int(input("Enter the width: "))
+# max_Height = int(input("Enter the height: "))
+# print("Matches frame shown")
+# for i in range(0, numberOfPicture):
+#     if PictureArray[i].GetWidth()<= max_Width  and PictureArray[i].GetHeight() <= max_Height  and frameColor <= PictureArray[i].GetColour():
+#         print(PictureArray[i].GetDescription(), str(PictureArray[i].GetWidth()), str(PictureArray[i].GetHeight()))
+
+# arrayNode = [[0 for x in range(3)] for y in range(20)]
+# rootPointer = -1
+# freeNode = 0
+
+# def addNode(arrayNode, rootPointer, freeNode):
+#     nodeData = int(input("Enter the data: "))
+#     if freeNode <= 19:
+#         arrayNode[freeNode][0] = -1
+#         arrayNode[freeNode][1] = nodeData
+#         arrayNode[freeNode][2] = -1
+#         if rootPointer == -1:
+#             rootPointer = 0
+#         else:
+#             placed = False
+#             currentNode = rootPointer
+#             while placed == False:
+#                 if nodeData < arrayNode[currentNode][1]:
+#                     if arrayNode[currentNode][0] == -1:
+#                         arrayNode[currentNode][0] = freeNode
+#                         placed = True
+#                     else:
+#                         currentNode = arrayNode[currentNode][0]
+#                 else:
+#                     if arrayNode[currentNode][2] == -1:
+#                         arrayNode[currentNode][2] = freeNode
+#                         placed = True
+#                     else:
+#                         currentNode =  arrayNode[currentNode][2]
+#         freeNode = freeNode +1
+        
+#     else:
+#         print("Tree is full")
+#     return arrayNode,rootPointer,freeNode
+        
+# def printAll(arrayNode):
+#     for i in range(len(arrayNode)):
+#         print(str(arrayNode[i][0])," ", str(arrayNode[i][1]), " ", str(arrayNode[i][2]))
+
+# def inOrder(arrayNode, rootPointer):
+#     if arrayNode[rootPointer][0] != -1:
+#         inOrder(arrayNode,arrayNode[rootPointer][0])
+#     print(str(arrayNode[rootPointer][1]))
+#     if arrayNode[rootPointer][2] != -1:
+#         inOrder(arrayNode,arrayNode[rootPointer][2])
+
+
+# # main progaram
+# for i in range(10):
+#     arrayNode , rootPointer, freeNode = addNode(arrayNode , rootPointer, freeNode)
+# printAll(arrayNode)
+# inOrder(arrayNode,rootPointer)
+
+# class node:
+#     def __init__(self, theData, nextNodeNumber):
+#         self.data = theData
+#         self.nextNode = nextNodeNumber
+
+
+# def outputNodes(linkedList,startPointer):
+#     while startPointer != -1:
+#         print(str(linkedList[startPointer].data))
+#         startPointer = linkedList[startPointer].nextNode    
+        
+# def addNode(linkedList,startPointer,emptyList):
+#     dataToAdd = int(input("Enter the data to add: "))
+#     if emptyList == -1:
+#         return False    
+#     newNodeIndex = emptyList
+#     emptyList = linkedList[emptyList].nextNode
+#     linkedList[newNodeIndex] = node(dataToAdd,-1)
+#     if startPointer == -1:
+#         startPointer = newNodeIndex
+#         return True
+#     while linkedList[startPointer].nextNode != -1:
+#         startPointer = linkedList[startPointer].nextNode
+#     linkedList[startPointer].nextNode = newNodeIndex
+#     return True
+    
+# linkedList = [node(1,1),node(5,4),node(6,7),node(7,-1),node(2,2),node(0,6),node(0,8),node(56,3),node(0,9),node(0,-1)]
+# startPointer = 0
+# emptyList = 5 
+
+# outputNodes(linkedList,startPointer)
+# returnValue = addNode(linkedList,startPointer,emptyList)
+# if returnValue:
+#     print("Item added successfully")
+# else:
+#     print("The list is full")
+# outputNodes(linkedList,startPointer)
+
+# DECLARE arrayData [0:10] ARRAY OF INTEGER
+
+
+# def linearSearch(value):
+#     for index in arrayData:
+#         if index == value:
+#             return True
+#     return False
+
+# def bubbleSort():
+#     temp = 0
+#     for x in range(0,10):
+#         for y in range(0,9):
+#             if theArray[y] < theArray[y+1]:
+#                 temp = theArray[y]
+#                 theArray[y+1] = temp
+# 
+
+# class treasureChest:
+#     # PRIVATE question : STRING
+#     # PRIVATE answer : INTEGER
+#     # PRIVATE points : INTEGER
+    
+#     def __init__(self, questionP,answerP,pointsP):
+#         self.__question = questionP
+#         self.__answer = answerP
+#         self.__points = pointsP
+    
+#     def getQuestion(self):
+#         return self.__question
+
+#     def checkAnswer(self,userAnswer):
+#         if self.__answer == userAnswer:
+#             return True
+#         else:
+#             return False
+
+#     def getPoints(self, attempts):
+#         if attempts == 1:
+#             return self.__points
+#         elif attempts == 2:
+#             return self.__points // 2
+#         elif attempts in (3,4):
+#             return self.__points // 4
+#         else:
+#             return 0
+    
+# # arrayTreasure (5) TreasureChest
+# arrayTreasure = []
+# def readData():
+#     arrayTreasure.clear()  
+#     fileName = r"F:\project\class\pastPapersPractice\TreasureChestData.txt"
+#     try:
+#         file = open(fileName,"r")
+#         dataFetched = (file.readline()).strip()
+#         while dataFetched != "":
+#             question = dataFetched
+#             answer = int((file.readline()).strip())
+#             points = int((file.readline()).strip())
+#             arrayTreasure.append(treasureChest(question,answer,points))
+#             dataFetched = (file.readline()).strip()
+#         file.close()    
+#     except IOError:
+#         print("Could not find the file")
+
+
+# readData()
+# questionNumber = int(input("Enter the question number you want to attempt (1 to 5): "))
+# if questionNumber <1 or questionNumber > 5:
+#     print("Invalid choice")
+# else:
+#     print(arrayTreasure[questionNumber -1].getQuestion())
+#     result = False
+#     count = 0
+#     while result == False:
+#         answer = int(input("Enter your answer: "))
+#         result = arrayTreasure[questionNumber-1].checkAnswer(answer)
+#         count +=1   
+#     print("The user has been awaded ",int(arrayTreasure[questionNumber-1].getPoints(count))," points")
