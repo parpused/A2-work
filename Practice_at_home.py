@@ -176,28 +176,28 @@
 
 # Linked list Searching 
 
-myLinkedList = [42, 17, 89, 34, 56, 12, 77, 23, 91, 45, 68, 10]
-myLinkedListPointers = [-1, 0, 1, 2, 3, 6, 7, 8, 9, 10, 11, -1]
-startPointer = 11
-nullPointer = -1
+# myLinkedList = [42, 17, 89, 34, 56, 12, 77, 23, 91, 45, 68, 10]
+# myLinkedListPointers = [-1, 0, 1, 2, 3, 6, 7, 8, 9, 10, 11, -1]
+# startPointer = 11
+# nullPointer = -1
 
-def find(itemSearch):
-    found = False
-    itemPointer = startPointer
-    while itemPointer != nullPointer and not found:
-        if myLinkedList[itemPointer] == itemSearch:
-            found = True
-        else:
-            itemPointer = myLinkedListPointers[itemPointer]
-    return itemPointer
+# def find(itemSearch):
+#     found = False
+#     itemPointer = startPointer
+#     while itemPointer != nullPointer and not found:
+#         if myLinkedList[itemPointer] == itemSearch:
+#             found = True
+#         else:
+#             itemPointer = myLinkedListPointers[itemPointer]
+#     return itemPointer
 
-# Enter item to search for
-item = int(input("Please enter item to be found: "))
-result = find(item)
-if result != -1:
-        print("Item found")
-else:
-    print("Item not found")
+# # Enter item to search for
+# item = int(input("Please enter item to be found: "))
+# result = find(item)
+# if result != -1:
+#         print("Item found")
+# else:
+#     print("Item not found")
 
 # Past PastPapers
 # def Unknown(x,y):
