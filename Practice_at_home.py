@@ -625,4 +625,176 @@
 # else:
 #     print("Found at " + str(returnValue))
 
-# PostOrder(RootPointer)
+# PostOrder(RootPointer)    
+
+#9618/41/O/N/25
+
+# Question 1
+# Stack = [None for i in range(30)]
+# TopOfStack = -1
+
+# def Push(value:int):
+#     global TopOfStack
+#     global Stack
+#     if TopOfStack < len(Stack) - 1:
+#         TopOfStack +=1
+#         Stack[TopOfStack] = value
+#         return True
+#     else:
+#         return False
+
+# def Pop():
+#     global TopOfStack
+#     global Stack
+#     if TopOfStack == -1:
+#         return -999
+#     else:
+#         value = Stack[TopOfStack]
+#         TopOfStack -= 1
+#         return value
+
+# def FindValues():
+#     largest = 0
+#     smallest = 1000
+#     for i in range(len(Stack) -1):
+#         value = Pop()
+#         if value != -999:
+#             if value > largest:
+#                 largest = value
+#             if value < smallest:
+#                 smallest = value
+#     print("Largest value is ",largest)
+#     print("Smallest value is ", smallest)                    
+    
+# # Main Program
+# import random
+# for i in range(40):
+#     value = random.randint(0,1000)
+#     result = Push(value)
+#     if result:
+#         continue
+#     else:
+#         print("Stack Full")
+#         break
+# FindValues()
+
+# Question 2
+
+# class Train:
+#     # PRIVATE TrainIDNumber : STRING
+#     # PRIVATE Route : INTEGER 
+    
+#     def __init__(self, TrainIDNumber_P , Route_P):
+#         self.__TrainIDNumber = TrainIDNumber_P
+#         self.__Route = Route_P
+
+#     def GetTrainIDNumber(self):
+#         return self.__TrainIDNumber
+    
+#     def GetRoute(self):
+#         return self.__Route
+# class Station:
+#     # PRIVATE StationID : STRING
+#     # PRIVATE NumberPlatforms : INTEGER
+#     # PRIVATE Trains : Array[0:9] OF Train
+#     # PRIVATE NumberTrains : INTEGER
+    
+#     def __init__(self, StationID_P, NumberPlatforms_P):
+#         self.__StationID = StationID_P
+#         self.__NumberPlatforms = NumberPlatforms_P
+#         self.__Trains = [] 
+#         self.__NumberTrains = 0
+
+#     def AddTrain(self,Train):
+#         if self.__NumberTrains >= self.__NumberPlatforms:
+#             return False
+#         else:
+#             self.__Trains.append(Train)
+#             self.__NumberTrains +=1
+#             return True
+
+#     def GetTrains(self):
+#         if self.__NumberTrains == 0:
+#             return "There are no trains"
+#         outputLine = "The trains at station " + self.__StationID + " are:\n"
+#         for i in range(self.__NumberTrains):
+#             outputLine = (outputLine + self.__Trains[i].GetTrainIDNumber() + " on route number " + str(self.__Trains[i].GetRoute()) + "\n")
+#         return outputLine
+# # Main Program 
+# train_1 = Train("12ADV", 134)
+# train_2 = Train("33ART", 20)
+# train_3 = Train("9FKF", 3)
+# train_4 = Train("21VBC", 24)
+
+
+# SouthSt = Station("STH", 2)
+# NorthSta =Station("NTH", 1)
+
+# ReturnValue = SouthSt.AddTrain(train_1)
+# if ReturnValue == False:
+#     print("Station is full")
+# ReturnValue = SouthSt.AddTrain(train_2)
+# if ReturnValue == False:
+#     print("Station is full")
+# ReturnValue = SouthSt.AddTrain(train_3)
+# if ReturnValue == False:
+#     print("Station is full")
+# ReturnValue = NorthSta.AddTrain(train_4)
+# if ReturnValue == False:
+#     print("Station is full")
+
+# print(SouthSt.GetTrains())
+# print(NorthSta.GetTrains())
+
+# Question 3
+
+class Record:
+    # PUBLIC DECLARE Key : INTEGER
+    # PUBLIC DECLARE Data : STRING
+
+    def __init__(self, Key_P, Data_P):
+        self.Key = Key_P
+        self.Data = Data_P
+    
+HashTable = []
+def InitialiseHashTable():
+    global HashTable
+    HashTable = [[Record(-1,"")] * 10 for y in range(100)]
+
+def Hash(value):
+    return value%100
+
+def InsertData(RecordData):
+    global HashTable
+    hashValue = Hash(RecordData.Key)
+    for i in range(10):
+        if HashTable[hashValue][i].Key == -1:
+            HashTable[hashValue][i] = RecordData
+            break
+
+
+def ReadData():
+    global HashTable
+    fileName = r"F:\project\class\pastPapersPractice\HashTableData.txt"
+    file = open(fileName,"r")
+    # file = open("HashTableData.txt","r")
+    for line in file:
+        data = line.strip().split(",")
+        InsertData(Record(int(data[0]) , data[1]))
+    file.close()
+
+def GetRecord(searchValue):
+    global HashTable
+    hashValue = Hash(searchValue)
+    for i in range(10):
+        if HashTable[hashValue][i].Key == searchValue:
+            return HashTable[hashValue][i].Data
+    return "Not found"
+
+# Main Program
+
+InitialiseHashTable()
+ReadData()
+for i in range (5):
+    value = int(input("Enter an integer value "))
+    print(GetRecord(value)) 
