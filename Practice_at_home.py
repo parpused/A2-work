@@ -748,53 +748,233 @@
 
 # Question 3
 
-class Record:
-    # PUBLIC DECLARE Key : INTEGER
-    # PUBLIC DECLARE Data : STRING
+# class Record:
+#     # PUBLIC DECLARE Key : INTEGER
+#     # PUBLIC DECLARE Data : STRING
 
-    def __init__(self, Key_P, Data_P):
-        self.Key = Key_P
-        self.Data = Data_P
+#     def __init__(self, Key_P, Data_P):
+#         self.Key = Key_P
+#         self.Data = Data_P
     
-HashTable = []
-def InitialiseHashTable():
-    global HashTable
-    HashTable = [[Record(-1,"")] * 10 for y in range(100)]
+# HashTable = []
+# def InitialiseHashTable():
+#     global HashTable
+#     HashTable = [[Record(-1,"")] * 10 for y in range(100)]
 
-def Hash(value):
-    return value%100
+# def Hash(value):
+#     return value%100
 
-def InsertData(RecordData):
-    global HashTable
-    hashValue = Hash(RecordData.Key)
-    for i in range(10):
-        if HashTable[hashValue][i].Key == -1:
-            HashTable[hashValue][i] = RecordData
-            break
+# def InsertData(RecordData):
+#     global HashTable
+#     hashValue = Hash(RecordData.Key)
+#     for i in range(10):
+#         if HashTable[hashValue][i].Key == -1:
+#             HashTable[hashValue][i] = RecordData
+#             break
 
 
-def ReadData():
-    global HashTable
-    fileName = r"F:\project\class\pastPapersPractice\HashTableData.txt"
-    file = open(fileName,"r")
-    # file = open("HashTableData.txt","r")
-    for line in file:
-        data = line.strip().split(",")
-        InsertData(Record(int(data[0]) , data[1]))
-    file.close()
+# def ReadData():
+#     global HashTable
+#     fileName = r"F:\project\class\pastPapersPractice\HashTableData.txt"
+#     file = open(fileName,"r")
+#     # file = open("HashTableData.txt","r")
+#     for line in file:
+#         data = line.strip().split(",")
+#         InsertData(Record(int(data[0]) , data[1]))
+#     file.close()
 
-def GetRecord(searchValue):
-    global HashTable
-    hashValue = Hash(searchValue)
-    for i in range(10):
-        if HashTable[hashValue][i].Key == searchValue:
-            return HashTable[hashValue][i].Data
-    return "Not found"
+# def GetRecord(searchValue):
+#     global HashTable
+#     hashValue = Hash(searchValue)
+#     for i in range(10):
+#         if HashTable[hashValue][i].Key == searchValue:
+#             return HashTable[hashValue][i].Data
+#     return "Not found"
 
-# Main Program
+# # Main Program
 
-InitialiseHashTable()
-ReadData()
-for i in range (5):
-    value = int(input("Enter an integer value "))
-    print(GetRecord(value)) 
+# InitialiseHashTable()
+# ReadData()
+# for i in range (5):
+#     value = int(input("Enter an integer value "))
+#     print(GetRecord(value))
+
+# 9618/42/O/N/25
+# import random
+
+# Question - 1
+
+# class Bird:
+#     # PRIVATE DistancePerHour : REAL
+#     # PRIVATE Species : STRING
+#     # PRIVATE XPosition : REAL
+#     # PRIVATE YPosition : REAL    
+
+#     def __init__(self, DistancePerHour_P, Species_P ):
+#         self.__DistancePerHour = DistancePerHour_P
+#         self.__Species = Species_P
+#         self.__XPosition = 500.0
+#         self.__YPosition = 500.0
+
+#     def GetSpecies(self):
+#         return self.__Species
+
+#     def GetPosition(self):
+#         return "X = " + str(self.__XPosition) + " Y = " + str(self.__YPosition)
+
+#     def Move(self, direction, minutes):
+#         distance_traveled = (self.__DistancePerHour/60) * int(minutes)
+#         if direction == "N":
+#             self.__YPosition += distance_traveled
+#         elif direction == "S":
+#             self.__YPosition -= distance_traveled
+#         elif direction == "E":
+#             self.__XPosition += distance_traveled
+#         elif direction == "W":
+#             self.__XPosition -= distance_traveled
+#         else:
+#             print("Wrong direction !")
+
+# # Main Program
+# bird_1  = Bird(71.0, "Cockatiel")
+# bird_2 = Bird(56.0, "Macaw")
+
+# print("Specie = " +  bird_1.GetSpecies() + " Position = "+ bird_1.GetPosition() )
+# print("Specie = " +  bird_2.GetSpecies() + " Position = "+ bird_2.GetPosition() )
+
+# user_bird_true =  False
+# while user_bird_true == False: 
+#     user_bird = int(input("Enter the bird you want to move(1 or 2): "))
+#     if user_bird > 0 and user_bird < 3:
+#         user_bird_true = True
+#     else:
+#         print("Wrong input")
+
+# user_direction_true = False
+# while user_direction_true == False:
+#     user_direction = input("Enter the direction the bir needs to travel (N,S,E,W): ").upper()
+#     if user_direction == "N" or user_direction == "S" or user_direction == "E" or user_direction == "W":
+#         user_direction_true = True
+#     else:
+#         print("Wrong input")
+
+
+# user_minutes_true = False
+# while user_minutes_true == False:
+#     user_minutes = int(input("Enter the time in minutes: "))
+#     if user_minutes >=0 and user_minutes <= 500.0:
+#         user_minutes_true = True
+#     else:
+#         print("Wrong input")
+
+# if user_bird == 1:
+#     bird_1.Move(user_direction, user_minutes)
+#     print(bird_1.GetSpecies()+ " is now at "+ bird_1.GetPosition())
+# else:
+#     bird_2.Move(user_direction, user_minutes)
+#     print(bird_2.GetSpecies()+ " is now at "+ bird_2.GetPosition())
+
+
+# Question - 2
+
+# def PrintArray(array):
+#     data = ""
+#     for i in array:
+#         data += str(i)+ " "
+#     print(data)
+
+# def BubbleSort(array):
+#     swap = True
+#     while swap == True:
+#         swap = False
+#         for i in range(len(array) -1):
+#             if array[i] > array[i+1]:
+#                 temp = array[i+1]
+#                 array[i+1] = array[i]
+#                 array[i] = temp
+#                 swap = True
+#     return array
+
+# def RecursiveBinarySearch(array, lower_Bound, upper_bound, search_value):
+#     if upper_bound >= lower_Bound:
+#         middle =  lower_Bound + (upper_bound - lower_Bound) // 2
+#         if array[middle] == search_value:
+#             return middle
+#         elif array[middle] > search_value:
+#             return RecursiveBinarySearch(array, lower_Bound, middle-1 , search_value)
+#         else:
+#             return RecursiveBinarySearch(array,middle +1 , upper_bound, search_value )
+#     else:
+#         return -1 
+
+
+
+# # main Program
+# array = []
+# array = random.sample(range(0,101), 20)
+
+# PrintArray(array)
+# print("Sorted")
+# PrintArray(BubbleSort(array))
+
+# value = int(input("Enter an integer: "))
+# result = RecursiveBinarySearch(array,0,len(array)-1, value)
+# if result == -1:
+#     print("Not Found")
+# else:
+#     print("Found at positon ", result)
+
+# Question - 3
+
+# TreeArray = [[ -1 for x in range(3) ] for y in range(50)]
+# RootPointer = -1
+# FreeNode = 0
+
+# def AddNode(value):
+#     global TreeArray,RootPointer,FreeNode
+#     if FreeNode <= 49:
+#         TreeArray[FreeNode][0] = -1
+#         TreeArray[FreeNode][1] = value
+#         TreeArray[FreeNode][2] = -1
+#         if RootPointer == -1:
+#             RootPointer = 0
+#         else:
+#             placecd = False
+#             currentNode = RootPointer
+#             while placecd == False:
+#                 if value < TreeArray[currentNode][1]:
+#                     if TreeArray[currentNode][0] == -1:
+#                         TreeArray[currentNode][0] = FreeNode
+#                         placecd = True
+#                     else:
+#                         currentNode = TreeArray[currentNode][0]
+#                 else:
+#                     if TreeArray[currentNode][2] == -1:
+#                         TreeArray[currentNode][2] = FreeNode
+#                         placecd = True
+#                     else:
+#                         currentNode = TreeArray[currentNode][2]
+#         FreeNode +=1
+#     else:
+#         print("The tree is full")
+
+# def WriteAllToFile():
+#     try:
+#         file = open(r"C:\project\Tree.txt", "w")
+#         for x in range(50):
+#             line = str(TreeArray[x][0])+ "," + str(TreeArray[x][1]) + "," + str(TreeArray[x][2])+"\n"
+#             file.write(line)
+#         file.close()
+#     except:
+#         print("Cannot write to file")
+
+
+# # main program
+# try:
+#     MyFile = open(r"C:\project\TreeData.txt", "r")
+#     for line in MyFile:
+#         AddNode(int(line.strip()))
+#     MyFile.close()
+# except IOError:
+#     print("Cannot open the file")
+# WriteAllToFile()
