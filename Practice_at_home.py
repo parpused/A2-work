@@ -979,3 +979,178 @@
 # except IOError:
 #     print("Cannot open the file")
 # WriteAllToFile()
+
+# 9618/43/O/N/25
+
+# Question - 1
+
+# class BoardObject:
+#     # DECLARE Code : STRING
+#     # DECLARE Value : INTEGER
+
+#     def __init__(self, Code_P, Value_P):
+#         self.Code = Code_P
+#         self.Value = Value_P
+
+#     def GetCode(self):
+#         return self.Code
+    
+#     def GetValue(self):
+#         return self.Value
+
+# class Board:
+#     # DECLARE TheBoard: ARRAY[0:9][0:9] OF BoardObject
+     
+#     def __init__(self):
+#         self.TheBoard = [[BoardObject("-", 0) for x in range(10)]for y in range (10)]
+
+#     def GetObject(self,row, column ):
+#         return self.TheBoard[row][column]
+
+#     def SetObjects(self,BoardObject_P, row, column):
+#         self.TheBoard[row][column] = BoardObject_P
+        
+#     def DisplayBoard(self):
+#         for x in range(10):
+#             line = ""
+#             for y in range(10):
+#                 line += self.TheBoard[x][y].GetCode()+ " "
+#             print(line)
+
+
+
+# # main program
+# Object1 = BoardObject("A",2)
+# Object2 = BoardObject("B",3)
+# Object3 = BoardObject("C",5)
+# Object4 = BoardObject("D",2)
+# Object5 = BoardObject("E",7)
+
+# Board = Board()
+
+# Board.SetObjects(Object1,0,0)
+# Board.SetObjects(Object2,9,9)
+# Board.SetObjects(Object3,4,5)
+# Board.SetObjects(Object4,2,2)
+# Board.SetObjects(Object5,8,7)
+
+# Board.DisplayBoard()
+
+# userRowTrue = False
+# while userRowTrue == False:
+#     userRow = int(input("Enter a row Number between (0-9): "))
+#     if userRow>=0 and userRow <= 9:
+#         userRowTrue = True
+
+# userColumnTrue = False
+# while userColumnTrue == False:
+#     userColumn = int(input("Enter a column Number between (0-9): "))
+#     if userColumn>=0 and userColumn <= 9:
+#         userColumnTrue = True
+
+# data = Board.GetObject(userRow,userColumn)
+
+# if data.GetCode() == "-":
+#     print("Miss")
+# else:
+#     print("You found "+ data.GetCode() + " with value "+ str(data.GetValue()))
+
+
+# Question - 2
+
+# def Enqueue(data):
+#     global NumberItems,Queue,QueueHead,QueueTail
+#     if QueueHead == -1:
+#         Queue[0] = data
+#         QueueHead = 0
+#         QueueTail = 0
+#         NumberItems +=1
+#         return True
+#     elif QueueTail >=99:
+#         return False
+#     else:
+#         QueueTail+=1
+#         Queue[QueueTail] = data
+#         NumberItems+=1
+#         return True        
+
+# def Dequeue():
+#     global NumberItems,Queue,QueueHead,QueueTail
+#     if QueueHead == -1:
+#         return "False"
+#     else:
+#         NumberItems-=1
+#         QueueHead+=1
+#         return Queue[QueueHead-1]
+
+# def ReadData():
+#     try:
+#         file = open(r"F:\project\class\pastPapersPractice\BinaryData.txt", "r")
+#         for line in file:
+#             result = Enqueue(str(line).strip())
+#             if result == "False":
+#                 break
+#         file.close()
+#     except IOError:
+#         print("No file found")
+
+# def Compress():
+#     global NewString,Queue,NumberItems
+#     previousData = Dequeue()
+#     while NumberItems > 0 and previousData != "False":
+#         count = 1
+#         newData = Dequeue()
+#         while newData == previousData:
+#             count+=1
+#             previousData = newData
+#             newData = Dequeue()
+#         line = previousData + str(count)
+#         NewString+= line
+#         previousData = newData
+
+# # main program
+# Queue = ["" for i in range(100)]
+# QueueHead = -1
+# QueueTail = -1
+# NumberItems = 0
+# NewString = ""
+# ReadData()
+# Compress()
+# print(NewString)
+
+# Question - 3
+
+# def RecursiveCount(ArrayCopy,NumberElements,DataToFind):
+#     if NumberElements > 0:
+#         newArray = ArrayCopy[1:]
+#         if ArrayCopy[0] == DataToFind:
+#             return 1+ RecursiveCount(newArray,NumberElements -1 , DataToFind)
+#         else:
+#             return RecursiveCount(newArray,NumberElements -1 ,DataToFind)
+#     else:return 0
+
+# def SplitData(string):
+#     data = ""
+#     dataArray = []
+#     count = 0
+#     for i in string:
+#         count +=1
+#         if i != ";":
+#             data +=i
+#         else:
+#             dataArray.append(data)
+#             data = ""
+#     if data != '':
+#             dataArray.append(data)
+
+#     return dataArray
+
+
+# # main program
+# array = [0,5,1,2,5,9,9,6,5,0]
+# print(RecursiveCount(array,10,0))
+
+# dataString = "x=0;y=1;x=x+y;y++"
+# result = SplitData(dataString)
+# for i in result:
+#     print(i)
